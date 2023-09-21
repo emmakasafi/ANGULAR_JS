@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>angular js</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <div ng-app="myapp" ng-controller="myctrl" ng-init="mycolour='pink'">
+        <input type="text" ng-model="firstname" placeholder="first name" ng-style="{'background-color': mycolour}">
+
+        <input type="text" ng-model="secondname" placeholder="surname"><br>
+        welcome onboard <span ng-bind="firstname | uppercase"></span>   <span ng-bind="secondname | uppercase"></span>
+        
+        <script>
+            var app=angular.module('myapp',[]);
+            app.controller('myctrl',function($scope){
+                $scope.firstname="emmaculate";
+                $scope.secondname="";
+
+            })
+        </script>
+
+    </div>
+</body>
+</html>

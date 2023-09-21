@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myctr">
+        <input type="text" placeholder="enter your name" ng-model="firstname"><br>
+        <span><h2>Welcome {{firstname}}</h2></span>
+       <span ng-bind="welcome"></span>
+
+        <table>
+            <th>
+                <tr>
+                    <td>NAME</td>
+                    <td>COURSE</td>
+                </tr>
+            </th>
+            <tr ng-repeat="x in students">
+                <td>{{x.name | uppercase}}</td>
+                <td>{{x.course | uppercase}}</td>
+
+            </tr>
+    
+        </table>
+
+        It is now <span >{{ Thetime }}</span><br>
+        the url of this site is <a ng-href="{{myurl}}">{{myurl}}</a>
+    </div>
+
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('myctr', function($scope, $location, $interval, $timeout) {
+            $scope.firstname = "";
+            $scope.welcome = "to my angular js code space";
+            $scope.myurl = $location.absUrl();
+            $scope.students=
+                [
+                    {
+                        "name":"emmaculate",
+                        "course":"computer science"
+
+                    },
+                    {
+                       "name":"ann",
+                       "course":"bcom"
+                    }
+
+                ]
+                $scope.Thetime=new Date().toLocaleTimeString();
+                $interval(function()
+                {
+                    $scope.Thetime= new Date().toLocaleTimeString();
+                },1000)
+                $timeout(function(){
+                    $scope.welcome="I hope you enjoy!!"
+                },6000)
+
+            
+        });
+    </script>
+</body>
+</html>

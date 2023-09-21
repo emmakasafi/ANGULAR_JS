@@ -4,7 +4,7 @@
 <body>
 
   <div ng-app="myApp" ng-controller="myCtrl" ng-init="mycolour='green'">
-    <p>My root element is {{5+5}}</p>
+    <p>5 plus 5={{5+5}}</p>
     <input ng-model="myname" placeholder="Enter your name"><br>
     Hello  <span ng-bind="myname"></span>
 
@@ -16,7 +16,7 @@
 
 
     <input ng-style="{'background-color': mycolour}" ng-model="mycolour"><br>
-
+    
     
     First Name: <input type="text" ng-model="firstName"><br>
     Last Name: <input type="text" ng-model="lastName"><br>
@@ -33,3 +33,26 @@ app.controller('myCtrl', function($scope) {
 </script>
 </body>
 </html>
+
+
+<div ng-app="myapp" ng-controller="myctrl" ng-init="firstname:''" >
+  <input type="text" ng-model="firstname"placeholder="enter your first name">
+  Welcome<span ng-bind="firstName"></span>
+
+
+  <input type="checkbox" ng-model="enabledbutton">
+  <button ng-disabled="enabledbutton">click here to Disable</button>
+
+  <input type="checkbox" ng-model="showbutton">
+  <button ng-show="showbutton">click here to how the button</button>
+
+</div>
+
+<script>
+  var app=angular.module('myapp',[]);
+  app.controller('myctrl',function($scope){
+    $scope.firstName="";
+    $scope.secondname="";
+  })
+
+</script>
